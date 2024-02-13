@@ -12,9 +12,34 @@ export default function App() {
     <SafeAreaView style={styles.container}>
       <StatusBar style='auto' />
       <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name='Meals Categories' component={CategoriesScreen} />
-          <Stack.Screen name='Meals OverView' component={MealsOverViewScreen} />
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: '#f4511e',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+            contentStyle: {
+              backgroundColor: '#c1c1c1',
+            },
+          }}
+        >
+          <Stack.Screen
+            name='Meals Categories'
+            component={CategoriesScreen}
+            options={{
+              title: 'Meal Categories',
+            }}
+          />
+          <Stack.Screen
+            name='Meals OverView'
+            component={MealsOverViewScreen}
+            options={{
+              title: 'Meals OverView',
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>
