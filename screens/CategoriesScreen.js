@@ -1,4 +1,4 @@
-import { StyleSheet, FlatList, SafeAreaView } from 'react-native';
+import { StyleSheet, SafeAreaView } from 'react-native';
 import { CATEGORIES } from '../data/data';
 import CategoryGridTile from '../components/CategoryGridTile';
 import { FlashList } from '@shopify/flash-list';
