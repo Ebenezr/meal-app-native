@@ -1,6 +1,7 @@
 import { StyleSheet, FlatList, SafeAreaView } from 'react-native';
 import { CATEGORIES } from '../data/data';
 import CategoryGridTile from '../components/CategoryGridTile';
+import { FlashList } from '@shopify/flash-list';
 
 const CategoriesScreen = ({ navigation }) => {
   const renderCategoryItem = (itemData) => {
@@ -20,11 +21,11 @@ const CategoriesScreen = ({ navigation }) => {
   };
   return (
     <SafeAreaView style={styles.screen}>
-      <FlatList
+      <FlashList
         data={CATEGORIES}
-        keyExtractor={(item) => item.id}
         renderItem={renderCategoryItem}
         numColumns={2}
+        estimatedItemSize={10}
       />
     </SafeAreaView>
   );
