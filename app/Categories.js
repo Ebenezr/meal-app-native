@@ -4,7 +4,7 @@ import CategoryGridTile from '../components/CategoryGridTile';
 import { FlashList } from '@shopify/flash-list';
 import { router } from 'expo-router';
 
-const CategoriesScreen = () => {
+const Categories = () => {
   const renderCategoryItem = (itemData) => {
     const onPressHandler = () => {
       router.navigate({
@@ -34,7 +34,7 @@ const CategoriesScreen = () => {
   );
 };
 
-export default CategoriesScreen;
+export default Categories;
 
 const styles = StyleSheet.create({
   screen: {

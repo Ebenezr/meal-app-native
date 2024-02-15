@@ -3,7 +3,7 @@ import { Stack } from 'expo-router';
 const Layout = () => {
   return (
     <Stack
-      initialRouteName='Home'
+      initialRouteName='index'
       screenOptions={{
         headerStyle: {
           backgroundColor: '#f4511e',
@@ -18,7 +18,7 @@ const Layout = () => {
       }}
     >
       <Stack.Screen
-        name='Home'
+        name='index'
         options={{
           title: 'Home',
         }}

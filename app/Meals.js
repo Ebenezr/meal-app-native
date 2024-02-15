@@ -3,7 +3,7 @@ import { MEALS } from '../data/data';
 import MealItem from '../components/MealItem';
 import { useLocalSearchParams } from 'expo-router';
 
-const MealsOverViewScreen = () => {
+const Meals = () => {
   const { catId } = useLocalSearchParams();
   const displayedMeals = MEALS.filter(
     (meal) => meal.categoryIds.indexOf(catId) >= 0
@@ -33,4 +33,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MealsOverViewScreen;
+export default Meals;
