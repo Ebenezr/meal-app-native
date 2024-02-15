@@ -5,20 +5,17 @@ import {
   Text,
   View,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 
 const MealItem = (props) => {
-  const navigation = useNavigation();
-
   console.log(props);
   return (
     <View style={styles.mealItem}>
       <Pressable
         onPress={() => {
-          navigation.navigate('MealDetail', {
-            mealId: props.id,
-            mealTitle: props.title,
-          });
+          // navigation.navigate('MealDetail', {
+          //   mealId: props.id,
+          //   mealTitle: props.title,
+          // });
         }}
       >
         <View>

@@ -1,11 +1,10 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { MEALS } from '../data/data';
 import MealItem from '../components/MealItem';
+import { useLocalSearchParams } from 'expo-router';
 
-const MealsOverViewScreen = ({ route }) => {
-  const catId = route.params.categoryId;
-  const catTitle = route.params.categoryTitle;
-
+const MealsOverViewScreen = () => {
+  const { catId } = useLocalSearchParams();
   const displayedMeals = MEALS.filter(
     (meal) => meal.categoryIds.indexOf(catId) >= 0
   );

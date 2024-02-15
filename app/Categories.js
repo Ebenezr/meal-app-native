@@ -2,13 +2,16 @@ import { StyleSheet, SafeAreaView } from 'react-native';
 import { CATEGORIES } from '../data/data';
 import CategoryGridTile from '../components/CategoryGridTile';
 import { FlashList } from '@shopify/flash-list';
+import { router } from 'expo-router';
 
-const CategoriesScreen = ({ navigation }) => {
+const CategoriesScreen = () => {
   const renderCategoryItem = (itemData) => {
     const onPressHandler = () => {
-      navigation.navigate('Meals OverView', {
-        categoryId: itemData.item.id,
-        categoryTitle: itemData.item.title,
+      router.navigate({
+        pathname: '/Meals',
+        params: {
+          catId: itemData.item.id,
+        },
       });
     };
     return (
