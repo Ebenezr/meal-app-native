@@ -35,6 +35,12 @@ const Layout = () => {
           title: 'Meals OverView',
         }}
       />
+      <Stack.Screen
+        name='MealDetails/[id]'
+        options={{
+          title: 'Meal Details',
+        }}
+      />
     </Stack>
   );
 };

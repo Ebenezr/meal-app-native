@@ -5,17 +5,19 @@ import {
   Text,
   View,
 } from 'react-native';
+import { router } from 'expo-router';
 
 const MealItem = (props) => {
-  console.log(props);
   return (
     <View style={styles.mealItem}>
       <Pressable
         onPress={() => {
-          // navigation.navigate('MealDetail', {
-          //   mealId: props.id,
-          //   mealTitle: props.title,
-          // });
+          router.navigate({
+            pathname: '/MealDetails/[id]',
+            params: {
+              id: props.id,
+            },
+          });
         }}
       >
         <View>
@@ -44,38 +46,46 @@ const MealItem = (props) => {
 
 const styles = StyleSheet.create({
   mealItem: {
-    height: 200,
-    width: '100%',
-    backgroundColor: '#f5f5f5',
-    borderRadius: 10,
+    height: 250,
+    backgroundColor: '#ffffff',
+    borderRadius: 15,
     overflow: 'hidden',
-    marginVertical: 10,
+    marginVertical: 12,
+    marginHorizontal: 20,
+    shadowColor: '#000',
+    shadowOpacity: 0.08,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 10,
+    elevation: 4,
   },
   mealRow: {
     flexDirection: 'row',
   },
   mealHeader: {
-    height: '85%',
+    height: '75%',
   },
   mealDetail: {
-    paddingHorizontal: 10,
-    justifyContent: 'space-between',
+    paddingHorizontal: 20,
+    justifyContent: 'space-around',
     alignItems: 'center',
-    height: '15%',
+    height: '25%',
   },
   bgImage: {
     width: '100%',
     height: '100%',
+    justifyContent: 'center',
     justifyContent: 'flex-end',
   },
   titleContainer: {
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: 'rgba(255, 255, 255, 0.7)',
     paddingVertical: 5,
-    paddingHorizontal: 12,
+    paddingHorizontal: 20,
+
+    width: '100%',
   },
   title: {
-    fontSize: 20,
-    color: 'white',
+    fontSize: 18,
+    color: '#333',
     textAlign: 'center',
   },
 });

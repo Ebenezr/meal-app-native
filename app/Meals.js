@@ -1,9 +1,12 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native';
-import { MEALS } from '../data/data';
+import { CATEGORIES, MEALS } from '../data/data';
 import MealItem from '../components/MealItem';
-import { useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams, useNavigation } from 'expo-router';
+
+import { useLayoutEffect } from 'react';
 
 const Meals = () => {
+  const navigation = useNavigation();
   const { catId } = useLocalSearchParams();
   const displayedMeals = MEALS.filter(
     (meal) => meal.categoryIds.indexOf(catId) >= 0
@@ -12,6 +15,16 @@ const Meals = () => {
   const renderMealItem = (itemData) => {
     return <MealItem {...itemData.item} />;
   };
+
+  useLayoutEffect(() => {
+    const categoryTitle = CATEGORIES.find(
+      (category) => category.id === catId
+    )?.title;
+
+    navigation.setOptions({
+      title: categoryTitle ? categoryTitle : 'Meals',
+    });
+  }, [navigation, catId]);
 
   return (
     <View style={styles.screen}>
