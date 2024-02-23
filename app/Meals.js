@@ -1,9 +1,9 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { CATEGORIES, MEALS } from '../data/data';
-import MealItem from '../components/MealItem';
+import MealItem from '../components/MealsList/MealItem';
 import { useLocalSearchParams, useNavigation } from 'expo-router';
-
 import { useLayoutEffect } from 'react';
+import MealsList from '../components/MealsList/MealList';
 
 const Meals = () => {
   const navigation = useNavigation();
@@ -29,11 +29,7 @@ const Meals = () => {
   return (
     <View style={styles.screen}>
       <Text>Meals OverView Screen</Text>
-      <FlatList
-        data={displayedMeals}
-        keyExtractor={(item) => item.id}
-        renderItem={renderMealItem}
-      />
+      <MealsList items={displayedMeals} />
     </View>
   );
 };

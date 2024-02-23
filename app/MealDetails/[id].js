@@ -3,25 +3,39 @@ import { useLocalSearchParams, useNavigation } from 'expo-router';
 import { MEALS } from '../../data/data';
 import { useLayoutEffect } from 'react';
 import IconButton from '../../components/IconButton';
+import { FavoriteContext } from '../../store/favorite-context';
+import { useContext } from 'react';
 
 const MealDetail = () => {
+  const favoriteMealContext = useContext(FavoriteContext);
   const navigation = useNavigation();
   const { id } = useLocalSearchParams();
 
   const selectedMeal = MEALS.find((meal) => meal.id === id);
+
+  const mealIsFavorite = favoriteMealContext.favorites.includes(id);
+
+  const toggleFavoriteHandler = () => {
+    if (mealIsFavorite) {
+      favoriteMealContext.removeFavorite(id);
+    } else {
+      favoriteMealContext.addFavorite(id);
+    }
+  };
 
   useLayoutEffect(() => {
     navigation.setOptions({
       title: selectedMeal.title,
       headerRight: () => (
         <IconButton
-          icon='favorite'
-          onPress={() => console.log('Favorite clicked')}
+          icon={mealIsFavorite ? 'favorite' : 'favorite-outline'}
+          onPress={toggleFavoriteHandler}
           color='white'
+          style={{ marginRight: 10 }}
         />
       ),
     });
-  }, [navigation, selectedMeal]);
+  }, [navigation, selectedMeal, mealIsFavorite, toggleFavoriteHandler]);
 
   return (
     <View>
