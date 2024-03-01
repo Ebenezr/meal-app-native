@@ -1,11 +1,15 @@
 import 'react-native-gesture-handler';
 import { Drawer } from 'expo-router/drawer';
 import { Ionicons } from '@expo/vector-icons';
-import FavoriteContextProvider from '../store/favorite-context';
+import FavoriteContextProvider from '../store/context/favorite-context';
+import { Provider } from 'react-redux';
+
+import { store } from '../store/redux/store';
 
 const Layout = () => {
   return (
-    <FavoriteContextProvider>
+    // <FavoriteContextProvider>
+    <Provider store={store}>
       <Drawer
         initialRouteName='index'
         screenOptions={{
@@ -67,7 +71,8 @@ const Layout = () => {
           }}
         />
       </Drawer>
-    </FavoriteContextProvider>
+    </Provider>
+    // </FavoriteContextProvider>
   );
 };
 

@@ -3,23 +3,27 @@ import { useLocalSearchParams, useNavigation } from 'expo-router';
 import { MEALS } from '../../data/data';
 import { useLayoutEffect } from 'react';
 import IconButton from '../../components/IconButton';
-import { FavoriteContext } from '../../store/favorite-context';
-import { useContext } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { addFavorite, removeFavorite } from '../../store/redux/favorites';
 
 const MealDetail = () => {
-  const favoriteMealContext = useContext(FavoriteContext);
   const navigation = useNavigation();
   const { id } = useLocalSearchParams();
+  const dispatch = useDispatch();
+
+  const favoriteMealIds = useSelector((state) => state.favorites.favorites);
 
   const selectedMeal = MEALS.find((meal) => meal.id === id);
 
-  const mealIsFavorite = favoriteMealContext.favorites.includes(id);
+  const mealIsFavorite = favoriteMealIds.includes(id);
 
   const toggleFavoriteHandler = () => {
     if (mealIsFavorite) {
-      favoriteMealContext.removeFavorite(id);
+      dispatch(removeFavorite({ id }));
+      // favoriteMealContext.removeFavorite(id);
     } else {
-      favoriteMealContext.addFavorite(id);
+      dispatch(addFavorite({ id }));
+      // favoriteMealContext.addFavorite(id);
     }
   };
 
